@@ -1,5 +1,5 @@
 # itemmodel
-from frame import itemsql
+from dao import itemsql
 
 
 class Item:

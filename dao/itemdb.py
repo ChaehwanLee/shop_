@@ -1,12 +1,25 @@
 # itemdb.py
-from frame import itemsql
+from dao import itemsql
 from frame.db import Db
 
 
 class ItemDb(Db):
     def __init__(self,dbname):
         super().__init__(dbname); # 기능이 없어서 상속받음 super().
-        super().makeTableitem();
+        self.makeTable(); # 내 자신을 요청해라
+
+    def makeTable(self):
+        cs = None;
+        con = None;
+        try:
+            con = self.connect();
+            cs = con.cursor();
+            cs.execute(itemsql.MAKE_TABLE);
+            con.commit();
+        except:
+            print('Make Table Error');
+        finally:
+            self.close(cs, con);
 
     def insert(self, item):
         cs = None;
