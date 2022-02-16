@@ -1,3 +1,5 @@
+#shopsql.py
+
 MAKE_TABLE = """
     CREATE TABLE IF NOT EXISTS tb_shop(
         id CHAR(20) PRIMARY KEY,
@@ -5,7 +7,7 @@ MAKE_TABLE = """
         money INT,
         rate REAL
     )
-""";# 테이블이 존재하지 않으면 tb_item 생성
+""";# 테이블이 존재하지 않으면 tb_shop 생성
 SHOP_INSERT = """
     INSERT INTO tb_shop VALUES ("%s","%s",%d,%f)
 """;
