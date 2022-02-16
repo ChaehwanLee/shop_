@@ -32,7 +32,7 @@ def start():
             try:
                 datas = itemdb.select();
                 for data in datas:
-                    print('%d %s %d %f' %data);
+                    print('%d %s %d %f' %data); # 받아온걸 출력했구나
             except:
                 print('Select Error')
 

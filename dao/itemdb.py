@@ -1,7 +1,7 @@
 # itemdb.py
 from dao import itemsql
 from frame.db import Db
-
+from model.itemmodel import Item
 
 class ItemDb(Db):
     def __init__(self,dbname):
@@ -93,3 +93,20 @@ class ItemDb(Db):
         finally:
             super().close(cs, con);
         return results;
+
+
+if __name__ == '__main__':
+    itemdb = ItemDb('shopdb');
+    try:
+        item = Item(100,'pants',10000,3.3);
+        itemdb.insert(item);
+    except:
+        print('Insert Error')
+
+    try:
+        results = itemdb.select();
+        for data in results:
+            print('%d %s %d %f' % data);
+
+    except:
+        print('Error')
